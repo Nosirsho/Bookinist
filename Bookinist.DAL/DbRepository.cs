@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Bookinist.DAL
 {
-    public class DbRepository<T> : IRepository<T> where T : Entity, new()
+    internal class DbRepository<T> : IRepository<T> where T : Entity, new()
     {
         private readonly BookinistDB _db;
         private readonly DbSet<T> _Set;
@@ -22,7 +22,7 @@ namespace Bookinist.DAL
             _Set = db.Set<T>();
         }
 
-        public IQueryable<T> Items => _Set;
+        public virtual IQueryable<T> Items => _Set;
 
         public T Add(T item)
         {
