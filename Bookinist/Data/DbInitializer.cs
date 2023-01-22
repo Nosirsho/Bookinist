@@ -25,7 +25,7 @@ namespace Bookinist.Data
             _Logger.LogInformation("Иницализация БД...");
 
             _Logger.LogInformation("Удаление существующей БД...");
-            await _db.Database.EnsureDeletedAsync()/*.ConfigureAwait(false)*/;
+            await _db.Database.EnsureDeletedAsync().ConfigureAwait(false);
             _Logger.LogInformation("Удаление существующей БД выполнено за {0} мс", timer.ElapsedMilliseconds);
 
             //_db.Database.EnsureCreated();
