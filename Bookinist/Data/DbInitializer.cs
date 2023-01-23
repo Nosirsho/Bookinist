@@ -23,11 +23,11 @@ namespace Bookinist.Data
         public async Task InitializeAsync() {
             var timer = Stopwatch.StartNew();
             _Logger.LogInformation("Иницализация БД...");
-
+/*
             _Logger.LogInformation("Удаление существующей БД...");
             await _db.Database.EnsureDeletedAsync().ConfigureAwait(false);
             _Logger.LogInformation("Удаление существующей БД выполнено за {0} мс", timer.ElapsedMilliseconds);
-
+*/
             //_db.Database.EnsureCreated();
             _Logger.LogInformation("Миграция БД...");
             await _db.Database.MigrateAsync();

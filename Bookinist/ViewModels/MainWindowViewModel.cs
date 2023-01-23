@@ -17,6 +17,7 @@ namespace Bookinist.ViewModels
         private readonly IRepository<Book> _BooksRepository;
         private readonly IRepository<Seller> _SellersRepository;
         private readonly IRepository<Buyer> _BuyersRepository;
+        private readonly IRepository<Deal> _DealsRepository;
         private readonly ISaleService _SaleService;
 
         //------------------------------------------------------------------------------------
@@ -89,7 +90,7 @@ namespace Bookinist.ViewModels
         /// <summary>Логика выполнения - Отобразить представление статистики</summary>
         private void OnShowStatisticViewCommandExecuted()
         {
-            CurrentModel = new StatisticViewModel(_BooksRepository, _BuyersRepository, _SellersRepository);
+            CurrentModel = new StatisticViewModel(_BooksRepository, _BuyersRepository, _SellersRepository, _DealsRepository);
         }
         #endregion
         //------------------------------------------------------------------------------------
@@ -97,12 +98,14 @@ namespace Bookinist.ViewModels
         public MainWindowViewModel(
             IRepository<Book> BooksRepository, 
             IRepository<Seller> SellersRepository, 
-            IRepository<Buyer> BuyersRepository, 
+            IRepository<Buyer> BuyersRepository,
+            IRepository<Deal> DealsRepository,
             ISaleService SaleService)
         {
             _BooksRepository = BooksRepository;
             _SellersRepository = SellersRepository;
             _BuyersRepository = BuyersRepository;
+            _DealsRepository = DealsRepository;
             _SaleService = SaleService;
 
             /*var dealsCount = _SaleService.Deals.Count();
