@@ -47,17 +47,20 @@ namespace Bookinist.ViewModels
         private async Task ComputeDealsStatisticAsync() {
             var bestsellers_quary = _DealsRepository.Items
                 .GroupBy(b => b.Book.Id)
-                .Select(deals => new { BookId = deals.Key, Count = deals.Count() })
+                .Select(deals => new { BookId = deals.Key, Count = deals.Count(), Sum = deals.Sum(d=>d.Price) })
                 .OrderByDescending(deals => deals.Count)
                 .Take(5)
                 .Join(_BooksRepository.Items,
                         deals => deals.BookId,
                         book => book.Id,
-                        (deals, book) => new BestSellerInfo { Book = book, SellCount = deals.Count });
-            Bestsellers.Clear();
+                        (deals, book) => new BestSellerInfo 
+                        { 
+                            Book = book, 
+                            SellCount = deals.Count, 
+                            SumCost = deals.Sum 
+                        });
 
-            foreach (var bestceller in await bestsellers_quary.ToArrayAsync())
-                Bestsellers.Add(bestceller);
+                Bestsellers.AddClear(await bestsellers_quary.ToArrayAsync());
         }
         #endregion
         /*--------------------------------------------------------------------------*/

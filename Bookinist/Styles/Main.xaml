@@ -11,4 +11,17 @@
     <Style TargetType="StatusBar">
         <Setter Property="DockPanel.Dock" Value="Bottom"/>
     </Style>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="GridLinesVisibility" Value="Vertical"/>
+        <Setter Property="VerticalGridLinesBrush" Value="DarkGray"/>
+        <Setter Property="AlternatingRowBackground" Value="AntiqueWhite"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="FontSize" Value="18"/>
+        
+    </Style>
 </ResourceDictionary>
