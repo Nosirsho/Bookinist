@@ -6,10 +6,6 @@
     <UseWPF>true</UseWPF>
     <StartupObject>Bookinist.Program</StartupObject>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Infrastructure\Commands\" />
-  </ItemGroup>
 <!--
   <ItemGroup>
     <PackageReference Include="MathCore.WPF" Version="0.0.44.4" />

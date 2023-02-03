@@ -53,7 +53,8 @@ namespace Bookinist.DAL
 
         public void Remove(int id)
         {
-            _db.Remove(new T { Id = id });
+            var item = _Set.Local.FirstOrDefault(l => l.Id == id) ?? new T { Id = id };
+            _db.Remove(item);
             if (AutoSaveChanges)
                 _db.SaveChanges();
         }

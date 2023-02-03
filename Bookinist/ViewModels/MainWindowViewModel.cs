@@ -19,6 +19,7 @@ namespace Bookinist.ViewModels
         private readonly IRepository<Buyer> _BuyersRepository;
         private readonly IRepository<Deal> _DealsRepository;
         private readonly ISaleService _SaleService;
+        private readonly IUserDialog _UserDialog;
 
         //------------------------------------------------------------------------------------
         #region Title : string - Загаловок
@@ -54,7 +55,7 @@ namespace Bookinist.ViewModels
         /// <summary>Логика выполнения - Отобразить представление книг</summary>
         private void OnShowBooksViewCommandExecuted() 
         {
-            CurrentModel = new BooksViewModel(_BooksRepository);
+            CurrentModel = new BooksViewModel(_BooksRepository, _UserDialog);
         }
         #endregion
 
@@ -100,13 +101,15 @@ namespace Bookinist.ViewModels
             IRepository<Seller> SellersRepository, 
             IRepository<Buyer> BuyersRepository,
             IRepository<Deal> DealsRepository,
-            ISaleService SaleService)
+            ISaleService SaleService,
+            IUserDialog UserDialog)
         {
             _BooksRepository = BooksRepository;
             _SellersRepository = SellersRepository;
             _BuyersRepository = BuyersRepository;
             _DealsRepository = DealsRepository;
             _SaleService = SaleService;
+            _UserDialog = UserDialog;
 
             /*var dealsCount = _SaleService.Deals.Count();
 
